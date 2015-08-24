@@ -59,10 +59,11 @@ output "datacenter_subnet_dmzA_id" {
     value = "${aws_subnet.dmzA.id}"
 }
 
-resource "aws_route_table_association" "dmzA-dmz" {
-    subnet_id = "${aws_subnet.dmzA.id}"
-    route_table_id = "${aws_route_table.dmz.id}"
-}
+// Batteries not included!
+//resource "aws_route_table_association" "dmzA-dmz" {
+//    subnet_id = "${aws_subnet.dmzA.id}"
+//    route_table_id = "${aws_route_table.dmz.id}"
+//}
 
 resource "aws_subnet" "dmzB" {
     vpc_id = "${aws_vpc.primary.id}"
@@ -78,10 +79,11 @@ output "datacenter_subnet_dmzB_id" {
     value = "${aws_subnet.dmzB.id}"
 }
 
-resource "aws_route_table_association" "dmzB-dmz" {
-    subnet_id = "${aws_subnet.dmzB.id}"
-    route_table_id = "${aws_route_table.dmz.id}"
-}
+// Batteries not included!
+//resource "aws_route_table_association" "dmzB-dmz" {
+//    subnet_id = "${aws_subnet.dmzB.id}"
+//    route_table_id = "${aws_route_table.dmz.id}"
+//}
 
 // NAT
 
@@ -99,10 +101,11 @@ output "datacenter_subnet_natA_id" {
     value = "${aws_subnet.natA.id}"
 }
 
-resource "aws_route_table_association" "natA-nat" {
-    subnet_id = "${aws_subnet.natA.id}"
-    route_table_id = "${aws_route_table.nat.id}"
-}
+// Batteries not included!
+//resource "aws_route_table_association" "natA-nat" {
+//    subnet_id = "${aws_subnet.natA.id}"
+//    route_table_id = "${aws_route_table.nat.id}"
+//}
 
 resource "aws_subnet" "natB" {
     vpc_id = "${aws_vpc.primary.id}"
@@ -118,10 +121,11 @@ output "datacenter_subnet_natB_id" {
     value = "${aws_subnet.natB.id}"
 }
 
-resource "aws_route_table_association" "natB-nat" {
-    subnet_id = "${aws_subnet.natB.id}"
-    route_table_id = "${aws_route_table.nat.id}"
-}
+// Batteries not included!
+//resource "aws_route_table_association" "natB-nat" {
+//    subnet_id = "${aws_subnet.natB.id}"
+//    route_table_id = "${aws_route_table.nat.id}"
+//}
 
 // Security Groups
 resource "aws_security_group" "jenkins" {
