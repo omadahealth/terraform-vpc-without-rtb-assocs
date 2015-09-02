@@ -41,3 +41,6 @@ Variable | Purpose
 `nat_client_sg` | Whitelist security group for nat servers. Any host that has this security group applied will be able to communicate on `tcpv4:25`, `tcpv4:80`, `tcpv4:443`, `tcpv4:587`, and `icmp:-1` to the NAT instance. This allows these communications to be translated to the public internet. If this security group is *not* applied, interfaces will not be able to communicate with the public internet.
 `ipsec_public_ip` | Public ip address of IPSEC instance 
 `ipsec_private_ip` | Private ip address of IPSEC instance
+
+TODO:
+- Make Environment tag a parameter to pass to the module
