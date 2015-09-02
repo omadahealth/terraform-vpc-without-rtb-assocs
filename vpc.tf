@@ -463,6 +463,9 @@ resource "aws_instance" "vpn" {
     vpc_security_group_ids = ["${aws_security_group.vpn.id}","${aws_security_group.ssh.id}","${aws_security_group.sshc.id}","${aws_security_group.mesos.id}","${aws_security_group.egress.id}"]
     tags {
         Name = "vpc-${var.cidr_base}-vpn"
+        DoNotMonitor = "yes"
+        PHI = "false"
+        Environment = "dev"
     }
 
     // provisioning
@@ -606,6 +609,9 @@ resource "aws_instance" "ipsec" {
     source_dest_check = "false"
     tags {
         Name = "vpc-${var.cidr_base}-ipsec"
+        Environment = "dev"
+        PHI = "false"
+        DoNotMonitor = "yes"
     }
 }
 
