@@ -153,7 +153,7 @@ output "jenkins_sg" {
 
 resource "aws_security_group" "mesos" {
     name = "vpc-${var.cidr_base}-MESOS"
-    description = "Whitelist Mesos Master-Slave Comms"
+    description = "Whitelist Mesos Master-Worker Comms"
     vpc_id = "${aws_vpc.primary.id}"
 
     ingress {
