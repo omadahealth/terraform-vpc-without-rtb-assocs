@@ -311,6 +311,16 @@ output "web_sg" {
     value = "${aws_security_group.web.id}"
 }
 
+resource "aws_security_group" "nagios" {
+    name = "vpc-${var.cidr_base}-NAGIOS"
+    description = "Whitelist Nagios servers"
+    vpc_id = "${aws_vpc.primary.id}"
+}
+
+output "nagios_sg" {
+    value = "${aws_security_group.nagios.id}"
+}
+
 resource "aws_security_group" "ssh" {
     name = "vpc-${var.cidr_base}-SSH"
     description = "Allow SSH"
@@ -324,17 +334,24 @@ resource "aws_security_group" "ssh" {
     }
 
     ingress {
-	from_port = 22
-	to_port = 22
-	protocol = "tcp"
-	security_groups = ["${aws_security_group.natc.id}"]
+        from_port = 22
+        to_port = 22
+        protocol = "tcp"
+        security_groups = ["${aws_security_group.natc.id}"]
     }
 
     ingress {
-	from_port = 22
-	to_port = 22
-	protocol = "tcp"
-	self = "true"
+        from_port = 0
+        to_port = 0
+        protocol = "-1"
+        security_groups = ["${aws_security_group.nagios.id}"]
+    }
+
+    ingress {
+        from_port = 22
+        to_port = 22
+        protocol = "tcp"
+        self = "true"
     }
 
     ingress {
