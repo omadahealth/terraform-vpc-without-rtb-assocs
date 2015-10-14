@@ -315,6 +315,13 @@ resource "aws_security_group" "nagios" {
     name = "vpc-${var.cidr_base}-NAGIOS"
     description = "Whitelist Nagios servers"
     vpc_id = "${aws_vpc.primary.id}"
+
+    ingress {
+        from_port = 0
+        to_port = 0
+        protocol = "-1"
+        security_groups = ["${aws_security_group.natc.id}", "${aws_security_group.vpn.id}"]
+    }
 }
 
 output "nagios_sg" {
