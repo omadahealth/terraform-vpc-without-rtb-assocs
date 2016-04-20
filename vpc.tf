@@ -239,7 +239,7 @@ resource "aws_security_group" "search" {
         to_port = 9200
         protocol = "tcp"
         self = "true"
-        security_groups = ["${aws_security_group.searchc.id}"]
+        security_groups = ["${aws_security_group.searchc.id}","${aws_security_group.natc.id}"]
     }
 
     ingress {
@@ -247,7 +247,7 @@ resource "aws_security_group" "search" {
         to_port = 9300
         protocol = "tcp"
         self = "true"
-        security_groups = ["${aws_security_group.searchc.id}"]
+        security_groups = ["${aws_security_group.searchc.id}","${aws_security_group.natc.id}"]
     }
 
     // Cluster communication
